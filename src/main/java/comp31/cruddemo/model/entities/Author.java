@@ -29,6 +29,9 @@ public class Author {
     @Column(name="LAST_NAME")
     private String lastName;
 
+    //One to many relationship with Author and their books.
+    //One Author may have many books or a "list" of books.
+    //Author references book
     @OneToMany(mappedBy = "author")
     private List<Book> books;
 

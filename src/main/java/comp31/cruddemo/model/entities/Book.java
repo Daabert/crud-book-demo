@@ -29,6 +29,9 @@ public class Book {
     @Column(name="BOOK_YEAR")
     private String year;
 
+    //Many to one relationship with author
+    //Book references author
+    //Many books can have one author
     @ManyToOne 
     @JoinColumn(name = "AUTHOR_ID", nullable = true)
     private Author author;

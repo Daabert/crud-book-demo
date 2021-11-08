@@ -24,18 +24,27 @@ public class BookController {
 
     Logger logger = LoggerFactory.getLogger(BookController.class);
     
+    //Creates get mapping for index.html for localhost:8080/index
     @GetMapping("/")
     public String getIndex()
     {
             return "index";
     }
 
+    //Creates get mapping for books.html for localhost:8080/books
     @GetMapping("/books")
     public String getBooks(
+        //Requesting a matching parameter for the html matching firstName and lastName to the column
         @RequestParam(required=false) String firstName, 
         @RequestParam(required=false) String lastName, 
         Model model)
     {
+        //Boolean that checks if author name is invalid 
+        //if the first name is null or empty or the last name is null or empty
+        //has to be null OR empty, because as long as it's not null you can test to see if it's empty
+        //otherwise isEmpty can throw errors
+        //If the authorname is invalid add a list of books
+        //otherwise log the valid author name and list their respective books
         boolean authorNameInvalid = 
             firstName == null || firstName.isEmpty() || 
             lastName  == null || lastName.isEmpty();
@@ -49,7 +58,7 @@ public class BookController {
         }
         return "books";
     }
-
+    //GetMapping function to navigate to the authors.html it gets the author model and populates the page data with a list of authors
     @GetMapping("/authors")
     public String getAuthors(Model model)
     {
