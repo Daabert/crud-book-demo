@@ -15,6 +15,7 @@ import comp31.cruddemo.services.BookService;
 public class BookController {
     
     BookService bookService;
+    
 
     @Autowired
     public BookController(BookService bookService) {
@@ -64,6 +65,57 @@ public class BookController {
     {
         model.addAttribute("authors" , bookService.findAuthors());
         return "authors";
+    }
+    @GetMapping("/year")
+    public String getYear(@RequestParam(required=false) String year, Model model)
+    {
+        model.addAttribute("books", bookService.findBooksByYear(year));
+        return "books";
+    }
+    
+    @GetMapping("/title")
+    public String getTitle(Model model)
+    {
+        model.addAttribute("books", bookService.byTitle());
+        return "books";
+    }
+
+    @GetMapping("/yearprice")
+    public String getYearByPrice(Model model)
+    {
+        model.addAttribute("books", bookService.byYearOrderPrice());
+        return "books";
+    }
+    @GetMapping("/nameinit")
+    public String getNameInit(@RequestParam(required=false) String lastName, Model model)
+    {
+        model.addAttribute("authors", bookService.findAuthorByInitial(lastName));
+        return "authors";
+
+    }
+    @GetMapping("/startcontain")
+    public String getNameStartContain(Model model)
+    {
+        model.addAttribute("authors", bookService.byNameContaining());
+        return "authors";
+    }
+    @GetMapping("/titlecontain")
+    public String getTitleContainTwo(Model model)
+    {
+        model.addAttribute("books", bookService.byTitleContainingTwo());
+        return "books";
+    }
+    @GetMapping("/titlenot")
+    public String getTitleNot(Model model)
+    {
+        model.addAttribute("books", bookService.byTitleNot());
+        return "books";
+    }
+    @GetMapping("/titlecontainandnot")
+    public String getTitleContainAndNot(Model model)
+    {
+        model.addAttribute("books", bookService.byTitleContainAndNot());
+        return "books";
     }
 
 }

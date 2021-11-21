@@ -22,12 +22,20 @@
     </div>
 
     <form action="/books" class="center">
+        <h1>Search Author By First And Last Name</h1>
         <label for="firstName">Author First Name</label>
         <input type="text" name="firstName", id="firstName">
         <br>
         <label for="last">Author Last Name</label>
         <input type="text" name="lastName", id="lastName">
         <br>
+        <input type="submit" value="Send">
+    </form>
+        
+    <form action="/year" class="center">
+        <h1>Search Book By Year</h1>
+        <label for="year">Year</label>
+        <input type="text" name="year", id="year">
         <input type="submit" value="Send">
     </form>
 
@@ -37,10 +45,14 @@
         <tr>
             <th>Title</th>
             <th colspan="2">Author</th>
+            <th colspan="2">Price</th> 
+            <th colspan="2">Year</th>
         </tr>
         <tr th:each="book:${books}">
             <td th:text="${book.title}"></td>
             <td colspan="2" th:text="${book.author.firstName} + ' ' + ${book.author.lastName}"></td>
+            <td colspan="2" th:text="'$' + ${book.price}"></td>
+            <td colspan="2" th:text="${book.year}"></td>
         </tr>
 
     </table>

@@ -69,5 +69,38 @@ public class BookService {
         }
         return bookList;
     }
+    public Iterable<Book> findBooksByYear(String year)
+    {
+        List <Book> bookList = bookRepo.findByYear(year);
+        return bookList;
+    }
+    public Iterable<Author> findAuthorByInitial(String lastName)
+    {
+        List <Author> authorList = authorRepo.findByLastNameStartingWith(lastName);
+        return authorList;
+    }
+
+    public List<Book> byTitle(){
+        return bookRepo.findByTitle("Java Programming");
+    }
+
+    public List<Book> byYearOrderPrice(){
+        return bookRepo.findByYearOrderByPriceAsc("2018");
+    }
+    public List<Author> byNameStarting(){
+        return authorRepo.findByLastNameStartingWith("C");
+    }
+    public List<Author> byNameContaining(){
+        return authorRepo.findByLastNameStartingWithAndLastNameContaining("C", "Car");
+    }
+    public List<Book> byTitleContainingTwo(){
+        return bookRepo.findByTitleContainingAndTitleContaining("Spring", "Action");
+    }
+    public List<Book> byTitleNot(){
+        return bookRepo.findByTitleNotContaining("Java");
+    }
+    public List<Book>byTitleContainAndNot(){
+        return bookRepo.findByTitleContainingAndTitleNotContaining("Spring", "Action");
+    }
 
 }

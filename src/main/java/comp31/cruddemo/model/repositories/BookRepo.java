@@ -16,4 +16,12 @@ public interface BookRepo extends CrudRepository<Book,Long>{
     List<Book> findByYear(String year);
     //Query findByTitle searches the book by title
     List<Book> findByTitle(String title);
+
+    List<Book> findByYearOrderByPriceAsc(String year);
+
+    List<Book> findByTitleContainingAndTitleContaining(String title, String keyword);
+
+    List<Book> findByTitleNotContaining(String title);
+
+    List<Book> findByTitleContainingAndTitleNotContaining(String title, String keyword);
 }

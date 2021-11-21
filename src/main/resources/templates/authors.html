@@ -23,6 +23,15 @@
     <div th:insert="fragments/frags :: navbar" class="navbar">
     </div>
 
+    <form action="/nameinit" class="center">
+        <h1>Search For Author Last Name Starting With</h1>
+        <label for="lasName">Author Last Name Initial</label>
+        <input type="text" name="lastName", id="lastName">
+        <br>
+        <input type="submit" value="Send">
+
+    </form>
+
     <table class="border">
         <tr>
             <th colspan="2">Authors</th>

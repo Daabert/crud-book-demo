@@ -35,4 +35,7 @@ public class Book {
     @ManyToOne 
     @JoinColumn(name = "AUTHOR_ID", nullable = true)
     private Author author;
+
+    @Column(name="BOOK_PRICE")
+    private String price;
 }

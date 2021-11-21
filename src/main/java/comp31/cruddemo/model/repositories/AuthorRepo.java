@@ -15,5 +15,9 @@ public interface AuthorRepo extends CrudRepository<Author,Long> {
     //the db by the authors first name and last name
     List<Author> findByFirstNameAndLastName(String firstName,String lastName);
     //Query findByAuthorId searches the db based on author id 
-    List<Author> findByAuthorId(Integer authorId);
+   //List<Author> findByAuthorId(Integer authorId);
+
+    List<Author> findByLastNameStartingWith(String lastName);
+
+    List<Author> findByLastNameStartingWithAndLastNameContaining(String lastName, String keyword);
 }

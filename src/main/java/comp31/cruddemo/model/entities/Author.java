@@ -41,6 +41,7 @@ public class Author {
         firstName = "";
         lastName = "";
         books = null;
+        
     }
 
 }
