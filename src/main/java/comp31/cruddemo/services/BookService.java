@@ -74,33 +74,43 @@ public class BookService {
         List <Book> bookList = bookRepo.findByYear(year);
         return bookList;
     }
+
+    //Author Queries
     public Iterable<Author> findAuthorByInitial(String lastName)
     {
         List <Author> authorList = authorRepo.findByLastNameStartingWith(lastName);
         return authorList;
     }
-
-    public List<Book> byTitle(){
-        return bookRepo.findByTitle("Java Programming");
+    public Iterable<Author> findAuthorBySequence(String lastName, String keyword)
+    {
+        List <Author> authorList = authorRepo.findByLastNameStartingWithAndLastNameContaining(lastName, keyword);
+        return authorList;
+    }
+    
+    //Book Queries
+    public Iterable<Book> findBookByPriceAndOrder(String year)
+    {
+        List <Book> bookList = bookRepo.findByYearOrderByPriceAsc(year);
+        return bookList;
     }
 
-    public List<Book> byYearOrderPrice(){
-        return bookRepo.findByYearOrderByPriceAsc("2018");
+    public Iterable<Book> findBookByTwoTitleWords(String title, String keyword)
+    {
+        List <Book> bookList = bookRepo.findByTitleContainingAndTitleContaining(title, keyword);
+        return bookList;
     }
-    public List<Author> byNameStarting(){
-        return authorRepo.findByLastNameStartingWith("C");
+
+    public Iterable<Book> findBookByTitleNot(String title)
+    {
+        List <Book> bookList = bookRepo.findByTitleNotContaining(title);
+        return bookList;
     }
-    public List<Author> byNameContaining(){
-        return authorRepo.findByLastNameStartingWithAndLastNameContaining("C", "Car");
+   
+    public Iterable<Book> findBookByTitleContainAndNot(String title, String keyword)
+    {
+        List <Book> bookList = bookRepo.findByTitleContainingAndTitleNotContaining(title, keyword);
+        return bookList;
     }
-    public List<Book> byTitleContainingTwo(){
-        return bookRepo.findByTitleContainingAndTitleContaining("Spring", "Action");
-    }
-    public List<Book> byTitleNot(){
-        return bookRepo.findByTitleNotContaining("Java");
-    }
-    public List<Book>byTitleContainAndNot(){
-        return bookRepo.findByTitleContainingAndTitleNotContaining("Spring", "Action");
-    }
+    
 
 }

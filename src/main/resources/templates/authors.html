@@ -24,12 +24,22 @@
     </div>
 
     <form action="/nameinit" class="center">
-        <h1>Search For Author Last Name Starting With</h1>
-        <label for="lasName">Author Last Name Initial</label>
+        <h2>Search For Author Last Name Starting With</h2>
+        <label for="lastName">Author Last Name Initial</label>
         <input type="text" name="lastName", id="lastName">
         <br>
         <input type="submit" value="Send">
 
+    </form>
+    <form action="/startcontain" class="center">
+        <h2>Search For Author Last Name Starting With Letter And Containing Letters In Sequence</h2>
+        <label for="lastName">Author Last Name Initial</label>
+        <input type="text" name="lastName", id="lastName">
+        <br>
+        <label for="keyword">Sequence of letters after initial character</label>
+        <input type="text" name="keyword", id="keyword">
+        <br>
+        <input type="submit" value="Send">
     </form>
 
     <table class="border">

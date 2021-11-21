@@ -73,17 +73,10 @@ public class BookController {
         return "books";
     }
     
-    @GetMapping("/title")
-    public String getTitle(Model model)
-    {
-        model.addAttribute("books", bookService.byTitle());
-        return "books";
-    }
-
     @GetMapping("/yearprice")
-    public String getYearByPrice(Model model)
+    public String getYearByPrice(@RequestParam(required=false) String year, Model model)
     {
-        model.addAttribute("books", bookService.byYearOrderPrice());
+        model.addAttribute("books", bookService.findBookByPriceAndOrder(year));
         return "books";
     }
     @GetMapping("/nameinit")
@@ -94,27 +87,33 @@ public class BookController {
 
     }
     @GetMapping("/startcontain")
-    public String getNameStartContain(Model model)
+    public String getNameStartContain(@RequestParam(required=false) String lastName,
+    @RequestParam(required=false) String keyword,
+    Model model)
     {
-        model.addAttribute("authors", bookService.byNameContaining());
+        model.addAttribute("authors", bookService.findAuthorBySequence(lastName, keyword));
         return "authors";
     }
     @GetMapping("/titlecontain")
-    public String getTitleContainTwo(Model model)
+    public String getTitleContainTwo(@RequestParam(required=false) String title, 
+    @RequestParam(required=false) String keyword,
+    Model model)
     {
-        model.addAttribute("books", bookService.byTitleContainingTwo());
+        model.addAttribute("books", bookService.findBookByTwoTitleWords(title, keyword));
         return "books";
     }
     @GetMapping("/titlenot")
-    public String getTitleNot(Model model)
+    public String getTitleNot(@RequestParam(required=false) String title, Model model)
     {
-        model.addAttribute("books", bookService.byTitleNot());
+        model.addAttribute("books", bookService.findBookByTitleNot(title));
         return "books";
     }
     @GetMapping("/titlecontainandnot")
-    public String getTitleContainAndNot(Model model)
+    public String getTitleContainAndNot(@RequestParam(required=false) String title, 
+    @RequestParam(required=false) String keyword,
+    Model model)
     {
-        model.addAttribute("books", bookService.byTitleContainAndNot());
+        model.addAttribute("books", bookService.findBookByTitleContainAndNot(title, keyword));
         return "books";
     }
 
